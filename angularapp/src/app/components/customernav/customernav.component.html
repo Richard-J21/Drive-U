@@ -1,0 +1,17 @@
+
+<div class="navbar">
+    <div class="logo">DriveU</div>
+    <div class="nav-links">
+        <div class="profile">{{authService.getUsername()}}/Customer</div>
+        <a  routerLink="/home" class="nav-link">Home</a>
+         <a [routerLink]="['/customer-view-drivers']" class="nav-link">Available Drivers</a>
+         <a [routerLink]="['/customer-view-request']" class="nav-link">My Requests</a>
+         <a [routerLink]="['/customerviewfeedback']" class="nav-link">Feedback</a>
+        <button class="logout" (click)="logOut()">Logout</button>
+        <div *ngIf="showLogoutConfirmation" class="logout-confirmation">
+                <p>Are you sure you want to logout?</p>
+                <button (click)="confirmLogout()">Yes</button>
+                <button (click)="cancelLogout()" class="cancel">No</button>
+            </div>
+    </div>
+</div>

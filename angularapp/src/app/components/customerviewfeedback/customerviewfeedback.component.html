@@ -1,0 +1,47 @@
+<h2>My Feedback</h2>
+<table>
+    <thead>
+        <tr>
+            <th>S.NO</th>
+            <th>FEEDBACK</th>
+            <th>CATEGORY</th>
+            <th>RATING</th>
+            <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="feedbacks.length === 0">
+            <td colspan="7">No data found</td>
+        </tr>
+        <tr *ngFor="let feedback of feedbacks; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ feedback.feedbackText }}</td>
+            <td>{{ feedback.category }}</td>
+            <td>{{ feedback.rating }}</td>
+            <td>
+                <button (click)="viewDriverInfo(feedback)">View Driver Info</button>
+                <button (click)="openDeletePopup(feedback)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+ 
+ 
+<div *ngIf="driver">
+    <button (click)="close()">X</button>
+    <h3>Driver details</h3>
+    <p><strong>Driver Name: </strong>{{driver.driverName}}</p>
+    <p><strong>License Number: </strong>{{driver.licenseNumber}}</p>
+    <p><strong>ExperienceYears: </strong>{{driver.experienceYears}}</p>
+    <p><strong>Contact Number: </strong>{{driver.contactNumber}}</p>
+</div>
+ 
+<!-- Delete Confirmation Popup -->
+ 
+<div class="popup" *ngIf="showDeletePopup">
+    <div class="popup-content">
+        <h3>Are you sure you want to delete this feedback?</h3>
+        <button class="confirm-btn" (click)="confirmDeleteFeedback()">Yes, Delete</button>
+        <button class="cancel-btn" (click)="closePopup()">Cancel</button>
+    </div>
+</div>

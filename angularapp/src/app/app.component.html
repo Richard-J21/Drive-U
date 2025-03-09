@@ -1,0 +1,23 @@
+<nav>
+    <div class="logo-container">
+        <h1 *ngIf="!authService.isLoggedIn()">DRIVE-U</h1>
+    </div>
+    <ul>
+        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/home">Home</a></li>
+        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login">Login</a></li>
+        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/signup">Sign-up</a></li>
+    </ul>
+</nav>
+<app-adminnav *ngIf="authService.isLoggedIn() && authService.isAdmin()"></app-adminnav>
+<app-customernav *ngIf="authService.isLoggedIn() && authService.isCustomer()"></app-customernav>
+<router-outlet></router-outlet>
+
+
+<!-- <div class="navbar">
+    <div class="logo">DriveU</div>
+    <div class="nav-links">
+        <a routerLink="/home" class="nav-link">Home</a>
+        <a routerLink="/login" class="nav-link">Login</a>
+        <a routerLink="/signup" class="nav-link">Sign-up</a>
+    </div>
+</div> -->

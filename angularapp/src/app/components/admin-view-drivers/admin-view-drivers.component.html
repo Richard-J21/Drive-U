@@ -1,0 +1,78 @@
+<div class="driver-container">
+ 
+    <div class="driver-card" *ngFor="let driver of drivers">
+   
+      <div class="driver-header">
+   
+        <img *ngIf="driver.image; else defaultAvatar" [src]="driver.image" class="driver-avatar" alt="driver-img" />
+   
+        <ng-template #defaultAvatar>
+   
+          <img src="https://cdn.vectorstock.com/i/500p/38/68/driver-in-orange-uniform-worker-with-steering-vector-41133868.jpg" class="driver-avatar"  alt="driver-img"/>
+   
+        </ng-template>
+   
+      </div>
+   
+      <div class="driver-details">
+   
+        <h3>{{ driver.driverName }}</h3>
+        <p><strong>Vehicle Type:</strong> {{ driver.vehicleType }}</p>
+        <p><strong>License:</strong> {{ driver.licenseNumber }}</p>
+        <p><strong>Phone:</strong> {{ driver.contactNumber }}</p>
+        <p><strong>Address:</strong> {{ driver.address }}</p>
+        <p><strong>Experience:</strong> {{ driver.experienceYears }} years</p>
+        <p *ngIf="driver.hourlyRate"><strong>Hourly Rate:</strong> ₹{{ driver.hourlyRate }}</p>
+        <p><strong>Status:</strong> {{ driver.availabilityStatus }}</p>
+   
+      </div>
+   
+      <div class="driver-actions">
+   
+        <button class="edit-btn" (click)="openEditPopup(driver)">Edit</button>
+        <button class="delete-btn" (click)="openDeletePopup(driver)">Delete</button>
+        <button class="status-btn" (click)="openStatus(driver)">Action</button>
+   
+        <div class="status-dropdown" *ngIf="showStatus && selectedDriver === driver">
+          <select [(ngModel)]="driver.availabilityStatus" (change)="changeStatus(driver.availabilityStatus)">
+            <option *ngIf="driver.availabilityStatus !== 'ACTIVE'" value="ACTIVE">ACTIVE</option>
+            <option *ngIf="driver.availabilityStatus !== 'INACTIVE'" value="INACTIVE">INACTIVE</option>
+            <option *ngIf="driver.availabilityStatus !== 'ON LEAVE'" value="ON LEAVE">ON LEAVE</option>
+          </select>
+        </div>
+      </div>
+   
+    </div>
+   
+  </div>
+   
+  <!-- Delete Confirmation Popup -->
+   
+  <div class="popup" *ngIf="showDeletePopup">
+    <div class="popup-content">
+      <h3>Are you sure you want to delete this driver?</h3>
+   
+      <p>{{ selectedDriver?.driverName }}</p>
+   
+      <button class="confirm-btn" (click)="confirmDeleteDriver()">Yes, Delete</button>
+   
+      <button class="cancel-btn" (click)="closePopup()">Cancel</button>
+   
+    </div>
+   
+  </div>
+   
+  <!-- Edit Confirmation Popup -->
+   
+  <div class="popup" *ngIf="showEditPopup">
+   
+    <div class="popup-content">
+      <h3>Are you sure you want to edit this driver?</h3>
+      <p>{{ selectedDriver?.driverName }}</p>
+      <button class="confirm-btn" (click)="confirmEditDriver(drivers.driverId)">Yes, Edit</button>
+      <button class="cancel-btn" (click)="closePopup()">Cancel</button>
+   
+   
+    </div>
+   
+  </div>

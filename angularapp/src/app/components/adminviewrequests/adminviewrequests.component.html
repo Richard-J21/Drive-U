@@ -1,0 +1,83 @@
+<div class="container">
+  <h2>Driver Requests for Approval</h2>
+  <hr>
+  <div class="search-filter">
+    <div class="filter-container">
+      <h5>Filter by Status</h5>
+      <select class="select" [(ngModel)]="statusFilter" (change)="filterByStatus()">
+        <option value="">All</option>
+        <option value="approved">Approved</option>
+        <option value="pending">Pending</option>
+        <option value="rejected">Rejected</option>
+        <option value="tripEnd">Trip End</option>
+      </select>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>USERNAME</th>
+        <th>PICKUP LOCATION</th>
+        <th>DROP LOCATION</th>
+        <th>TRIP DATE</th>
+        <th>STATUS</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="filteredRequests.length === 0">
+        <td colspan="7">Oops! No records found</td>
+      </tr>
+      <tr *ngFor="let request of filteredRequests; let i = index">
+
+        <td>{{ i + 1 }}</td>
+        <td>{{request.user.username }}</td>
+        <td>{{ request.pickupLocation }}</td>
+        <td>{{ request.dropLocation }}</td>
+        <td>{{ request.tripDate | date }}</td>
+        <td>{{ request.status }}</td>
+        <td>
+          <button (click)="showDriverDetails(request)">Show Driver Details</button>
+          <button *ngIf="request.status !== 'closed' && request.status !== 'approved' "  (click)="approveRequest(request, request.driverRequestId)">Approve</button>
+          <button *ngIf="request.status !== 'closed' && request.status !== 'rejected' " (click)="rejectRequest(request, request.driverRequestId)">Reject</button>
+          <button (click)="showRequestProgression(request)">View Stage</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="driverToggle">
+    <h3>Driver Details</h3>
+    <p><strong>Driver Name:</strong> {{ driverDetails.driverName }}</p>
+    <p><strong>License Number:</strong> {{ driverDetails.licenseNumber }}</p>
+    <p><strong>Experience Years:</strong> {{ driverDetails.experienceYears }}</p>
+    <p><strong>Contact Number:</strong> {{ driverDetails.contactNumber }}</p>
+    <p><strong>Vehicle Type:</strong> {{ driverDetails.vehicleType }}</p>
+    <p><strong>Hourly Rate:</strong> {{ driverDetails.hourlyRate }}</p>
+    <p><strong>Address:</strong> {{ driverDetails.address }}</p>
+    <button (click)="driverToggle = false">Close</button>
+  </div>
+
+  <div *ngIf="progressToggle" class="request-details">
+    <div class="progression">
+      <button (click)="back()">X</button>
+      <h3>Request Progression</h3>
+      <p
+        [class.active]="requestProgression.status === 'pending' || requestProgression.status === 'approved' || requestProgression.status === 'tripEnd' || requestProgression.status === 'closed'">
+        Pending</p>
+      <p
+        [class.active]="requestProgression.status === 'approved' || requestProgression.status === 'tripEnd' || requestProgression.status === 'closed'">
+        Approved</p>
+      <p [class.active]="requestProgression.status === 'tripEnd' || requestProgression.status === 'closed' ">Trip
+        End</p>
+      <p [class.active]="requestProgression.status === 'closed'">Closed</p>
+    </div>
+    <div class="close-request">
+      <button (click)="closeRequest()">Close Request</button>
+    </div>
+  </div>
+
+ 
+</div>

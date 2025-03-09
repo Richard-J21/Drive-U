@@ -1,0 +1,120 @@
+<div class="container">
+  <h2>{{ isEditing ? 'Edit Driver' : 'Add Drivers Here' }}</h2>
+ 
+  <form [formGroup]="driverform" (ngSubmit)="addOrEditDriver()">
+    <div class="form-group">
+      <label for="driverName">
+        <i class="fas fa-user"></i> Driver Name
+      </label>
+      <input type="text" id="driverName" formControlName="driverName" class="form-control"/>
+      <div *ngIf="driverform.get('driverName').invalid && driverform.get('driverName').touched" class="text-danger">
+        {{ driverform.get('driverName').errors?.required ? 'Driver Name is required' : 'Driver Name must be between 2 and 50 characters long and can only contain letters and spaces' }}
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="licenseNumber">
+        <i class="fas fa-id-card"></i> License Number
+      </label>
+      <input type="text" id="licenseNumber" formControlName="licenseNumber" class="form-control" />
+      <div *ngIf="driverform.get('licenseNumber').invalid && driverform.get('licenseNumber').touched" class="text-danger">
+        {{ driverform.get('licenseNumber').errors?.required ? 'License Number is required' : 'License Number must be 2 letters followed by 13 digits' }}
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="experienceYears">
+        <i class="fas fa-calendar-alt"></i> Experience Years
+      </label>
+      <input type="text" id="experienceYears" formControlName="experienceYears" class="form-control" />
+      <div *ngIf="driverform.get('experienceYears').invalid && driverform.get('experienceYears').touched && driverform.get('experienceYears').errors?.required" class="text-danger">
+       'Experience Years is required'
+      </div>
+      <div *ngIf="driverform.get('experienceYears').invalid && driverform.get('experienceYears').touched && driverform.get('experienceYears').errors?.max" class="text-danger">
+        Experience Years cannot exceed 50
+      </div>
+      <div *ngIf="driverform.get('experienceYears').invalid && driverform.get('experienceYears').touched && driverform.get('experienceYears').errors?.min" class="text-danger">
+        Experience should not be negative
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="contactNumber">
+        <i class="fas fa-phone"></i> Contact Number
+      </label>
+      <input type="text" id="contactNumber" formControlName="contactNumber" class="form-control" />
+      <div *ngIf="driverform.get('contactNumber').invalid && driverform.get('contactNumber').touched" class="text-danger">
+        {{ driverform.get('contactNumber').errors?.required ? 'Contact Number is required' : 'Contact Number must be 10 digits' }}
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="availabilityStatus">
+        <i class="fas fa-check-circle"></i> Availability Status
+      </label>
+      <select id="availabilityStatus" formControlName="availabilityStatus" class="form-control">
+        <option value="ACTIVE">ACTIVE</option>
+        <option value="INACTIVE">INACTIVE</option>
+        <option value="ON LEAVE">ON LEAVE</option>
+      </select>
+      <div *ngIf="driverform.get('availabilityStatus').invalid && driverform.get('availabilityStatus').touched" class="text-danger">
+        Availability Status is required
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="address">
+        <i class="fas fa-map-marker-alt"></i> Address
+      </label>
+      <input type="text" id="address" formControlName="address" class="form-control" />
+      <div *ngIf="driverform.get('address').invalid && driverform.get('address').touched" class="text-danger">
+        {{ driverform.get('address').errors?.required ? 'Address is required' : 'Address must be between 5 and 50 characters long' }}
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="vehicleType">
+        <i class="fas fa-car"></i> Vehicle Type
+      </label>
+      <select id="vehicleType" formControlName="vehicleType" class="form-control">
+        <option value="Two Wheeler">Two Wheeler</option>
+        <option value="Four Wheeler">Four Wheeler</option>
+        <option value="Mini Bus">Mini BUS</option>
+        <option value="Bus">BUS</option>
+      </select>
+      <div *ngIf="driverform.get('vehicleType').invalid && driverform.get('vehicleType').touched" class="text-danger">
+        Vehicle Type is required
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="hourlyRate">
+        <i class="fas fa-money-bill-wave"></i> Hourly Rate
+      </label>
+      <input type="number" id="hourlyRate" formControlName="hourlyRate" class="form-control" />
+      <div *ngIf="driverform.get('hourlyRate').invalid && driverform.get('hourlyRate').touched" class="text-danger">
+        Hourly Rate is required
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="image">
+        <i class="fas fa-image"></i> Image
+      </label>
+      <input type="file" id="image" (change)="onFileChange($event)" class="form-control" />
+      <div *ngIf="driverform.get('image').invalid && driverform.get('image').touched" class="text-danger">
+        Image is required
+      </div>
+    </div>
+ 
+    <button type="submit" class="btn btn-primary">{{ isEditing ? 'Update Driver' : 'Add Driver' }}</button>
+  </form>
+ 
+  <div *ngIf="successMessage" class="alert alert-success popup">
+    {{ successMessage }}
+  </div>
+ 
+  <div *ngIf="errorMessage" class="alert alert-danger popup">
+    {{ errorMessage }}
+  </div>
+</div>

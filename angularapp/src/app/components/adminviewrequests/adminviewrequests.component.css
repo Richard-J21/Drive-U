@@ -1,0 +1,159 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h2 {
+  text-align: center;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+hr{
+  border: none;
+  height: 3px;
+  background-color: #007bff;
+  width: 85%;
+}
+
+/* Search Filter */
+.search-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-filter input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  width: 30%;
+  margin-right: auto;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.filter-container h5 {
+  margin-right: 20px; /* Adjust the margin to add more space */
+}
+
+.search-filter select {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  width: 150px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid #dee2e6;
+ 
+}
+
+table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+table td {
+  background-color: #f8f9fa;
+  
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #e9ecef;
+}
+
+/* Buttons */
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:first-child {
+  background-color: #007bff;
+  color: #fff;
+}
+
+button:nth-child(2) {
+  background-color: #28a745;
+  color: #fff;
+}
+
+button:nth-child(3) {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+button:nth-child(4) {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* Request Details */
+.request-details {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.request-details p {
+  margin: 10px 0;
+}
+
+/* Progression */
+.progression {
+  margin-top: 20px;
+}
+
+.progression p {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  margin-right: 10px;
+  color: #6c757d;
+}
+
+.progression p.active {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.close-request {
+  margin-top: 20px;
+}

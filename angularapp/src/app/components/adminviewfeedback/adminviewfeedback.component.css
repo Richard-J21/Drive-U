@@ -1,0 +1,41 @@
+h2{
+  display: flex;
+  justify-content: center;
+}
+ 
+hr {
+    border: none;
+    height: 2px;
+    background-color: #0a9bcb; /* Black line */
+    width: 85%;
+}
+ 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+ 
+table, th, td {
+  border: 1px solid #ddd;
+}
+ 
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+ 
+th {
+  background-color: #0ba1f8;
+  color: white;
+}
+ 
+td[colspan="5"] {
+  text-align: center;
+  color: #888;
+}
+.filter {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

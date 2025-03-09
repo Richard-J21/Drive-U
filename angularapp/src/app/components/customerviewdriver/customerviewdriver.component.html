@@ -1,0 +1,25 @@
+<div class="driver-container">
+    <div class="driver-card" *ngFor="let driver of drivers">
+      <div class="driver-header">
+        <img *ngIf="driver.image; else defaultAvatar" [src]="driver.image" class="driver-avatar" alt="driver-img" />
+        <ng-template #defaultAvatar>
+          <img src="https://png.pngtree.com/png-clipart/20230802/original/pngtree-driving-person-icon-driver-avatar-picture-image_7826127.png" class="driver-avatar" alt="driver-img"/>
+        </ng-template>
+      </div>
+      <div class="driver-details">
+        <h3>{{ driver.driverName }}</h3>
+        <p><strong>Vehicle Type:</strong> {{ driver.vehicleType }}</p>
+        <p><strong>License:</strong> {{ driver.licenseNumber }}</p>
+        <p><strong>Phone:</strong> {{ driver.contactNumber }}</p>
+        <p><strong>Address:</strong> {{ driver.address }}</p>
+        <p><strong>Experience:</strong> {{ driver.experienceYears }} years</p>
+        <p *ngIf="driver.hourlyRate"><strong>Hourly Rate:</strong> ₹{{ driver.hourlyRate }}</p>
+        <p><strong>Status:</strong> {{ driver.availabilityStatus }}</p>
+      </div>
+      <div class="driver-actions">
+        <button class="request-btn" [disabled]="driver.availabilityStatus !== 'ACTIVE'" (click)="requestDriver(driver.driverId)">
+          {{ getStatusByDriverId(driver.driverId) === 'pending' ? 'Requested' : 'Request' }}
+        </button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,41 @@
+/* CSS for the navigation bar */
+nav {
+  background: linear-gradient(to right, #2c3e50, #d4af37); /* Gradient background from blue to gold */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between logo and nav links */
+  font-family: Arial, sans-serif;
+}
+
+nav .logo-container {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+app-adminnav, app-customernav {
+  display: block;
+}
+
+router-outlet {
+  display: block;
+}

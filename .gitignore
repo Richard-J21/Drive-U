@@ -1,0 +1,8 @@
+# dependencies
+node_modules/
+ 
+# Spring Boot specific
+target/
+ 
+# Logs
+logs/

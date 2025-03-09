@@ -1,0 +1,72 @@
+
+
+
+   /* CSS for the navigation bar */
+.navbar {
+  background: linear-gradient(to right, #2c3e50, #d4af37); /* Gradient background from blue to gold */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Arial, sans-serif;
+}
+ 
+.navbar .logo {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+ 
+.navbar .nav-links {
+  display: flex;
+  align-items: center;
+}
+ 
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 16px;
+}
+ 
+.navbar .nav-links .profile {
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+ 
+  margin-right: 10px;
+}
+ 
+.navbar .nav-links .logout {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+ 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+ 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  color: black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+ 
+
+.dropdown-content {
+  background-color:rgb(3, 3, 16);
+ 
+}
+ 
+.dropdown:hover .dropdown-content {
+  display: block;
+}

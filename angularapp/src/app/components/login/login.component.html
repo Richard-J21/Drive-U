@@ -1,0 +1,55 @@
+<!-- 
+<div class="container">
+    <div class="left">
+        <div class="center-box">DRIVEU</div>
+        <img src="/assets/images/background.webp" alt="DriveU Background"
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px 0 0 8px;">
+    </div>
+ 
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+ 
+    <input type="email" name="email" id="email" formControlName="email" placeholder="Email">
+    <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
+        <small *ngIf="loginForm.get('email').errors?.required">Email is required.</small>
+        <small *ngIf="loginForm.get('email').errors?.email">Email should be valid.</small>
+    </div>
+ 
+    <input type="password" name="password" id="password" formControlName="password" placeholder="password">
+ 
+    <button type="submit" [disabled]="loginForm.invalid">Log In</button>
+ 
+    <small>Don't have an acoount? <a routerLink="/signup">Sign Up</a></small>
+</form> -->
+
+<div class="container">
+    <div class="left">
+      <div class="center-box">DRIVEU</div>
+      <img src="/assets/images/background.webp" alt="DriveU Background"
+           style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px 0 0 8px;">
+    </div>
+  
+    <div class="right">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  
+        <input type="email" name="email" id="email" formControlName="email" placeholder="Email">
+        <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
+          <small *ngIf="loginForm.get('email').errors?.required">Email is required.</small>
+          <small *ngIf="loginForm.get('email').errors?.email">Email should be valid.</small>
+        </div>
+  
+        <div class="password-container">
+          <input [type]="passwordFieldType" name="password" id="password" formControlName="password" placeholder="Password">
+          <label class="show-password">
+            <input type="checkbox" (change)="togglePasswordVisibility()"> Show Password
+          </label>
+        </div>
+  
+        <button type="submit" [disabled]="loginForm.invalid">Log In</button>
+  
+        <small>Don't have an account? <a routerLink="/signup">Sign Up</a></small>
+  
+      </form>
+    </div>
+  </div>
+  
+  

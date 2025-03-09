@@ -1,0 +1,106 @@
+<div class="container">
+  <h2>Requested Drivers</h2>
+ 
+  <div class="search-filter">
+    <!-- <input
+        type="text"
+        placeholder="Search by Driver Name"
+        [(ngModel)]="searchText"
+        (input)="searchRequests()"
+      /> -->
+  </div>
+ 
+  <div *ngIf="driverRequests.length === 0">
+    <p>No Data Found</p>
+  </div>
+ 
+  <div *ngIf="driverRequests.length > 0" class="card-container">
+    <div *ngFor="let request of driverRequests" class="card">
+      <h3>{{ request.driverName }}</h3>
+      <p>Pickup Location: {{ request.pickupLocation }}</p>
+      <p>Drop Location: {{ request.dropLocation }}</p>
+      <p>Trip Date: {{ request.tripDate | date }}</p>
+      <p>Status: {{ request.status }}</p>
+ 
+      <button (click)="showDetails(request)">Show More</button>
+      <button (click)="confirmDelete(request.driverRequestId)" [disabled]="request.status !== 'pending'">Delete</button>
+      <button (click)="editRequest(request.driverRequestId)" [disabled]="request.status !== 'pending'">Edit</button>
+      <button (click)="endTrip(request)" [disabled]="request.status !== 'approved'">Trip End</button>
+      <button [disabled]="request.status!=='tripend'" (click)="paymentPopUp(request)">Fetch Payment</button>
+    </div>
+  </div>
+ 
+  <div *ngIf="selectedRequest" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeDetails()">&times;</span>
+      <h2>Request Details</h2>
+      <p><strong>Driver Name:</strong> {{ selectedRequest.driver.driverName }}</p>
+      <p><strong>Contact Number:</strong> {{ selectedRequest.driver.contactNumber }}</p>
+      <p><strong>Vehicle Type:</strong> {{ selectedRequest.driver.vehicleType }}</p>
+      <p><strong>Requested Date:</strong> {{ selectedRequest.requestDate }}</p>
+      <p><strong>Estimated Duration:</strong> {{ selectedRequest.estimatedDuration }}</p>
+      <p><strong>Trip Date:</strong> {{ selectedRequest.tripDate | date }}</p>
+      <p><strong>Status:</strong> {{ selectedRequest.status }}</p>
+      <p><strong>Payment Amount:</strong> {{ selectedRequest.paymentAmount }}</p>
+      <p><strong>Comments:</strong> {{ selectedRequest.comments }}</p>
+ 
+      <!-- <button (click)="confirmDelete(selectedRequest.driverRequestId)">Delete</button>
+        <button (click)="editRequest(selectedRequest)">Edit</button>
+        <button (click)="endTrip(selectedRequest)" [disabled]="selectedRequest.status !== 'approved'">Trip End</button> -->
+      <!-- <button [disabled]="!isFetchPayment" (click)="paymentdialogBox()">Fetch Payment</button> -->
+    </div>
+  </div>
+</div>
+ 
+<!-- travel charge -->
+<div *ngIf="isRequestPaymentDetail">
+  <button (click)="closeDetails()">X</button>
+  <h5>Travel Charge</h5>
+  <strong>
+    <p>We hope you had a wonderful journey!</p>
+  </strong>
+  <strong>
+    <p>Your travel charge is {{requestPaymentDetail.paymentAmount}}</p>
+  </strong>
+  <strong>
+    <p>Actual Duration :- {{requestPaymentDetail.actualDuration}}</p>
+  </strong>
+  <strong>
+    <p>Actual Drop Date :- {{getFormattedDate(requestPaymentDetail.actualDropDate)}}</p>
+  </strong>
+  <strong>
+    <p>Actual Drop Time :- {{getFormattedTime(requestPaymentDetail.actualDropTime)}}</p>
+  </strong>
+ 
+  <!-- <a [routerLink]="['/customerpostfeedback']" [queryParams]="{driverId: requestPaymentDetail.driverId}">Write a Review</a> -->
+  <!-- <a [routerLink]="['/customerpostfeedback', requestPaymentDetail.driverId]">Write a Review</a> -->
+  <button (click)="routeToPostFeedback()">Write a Review</button>
+  <button (click)="closeDetails()">>> Skip Now</button>
+</div>
+
+
+
+
+
+<!-- <div *ngIf="requestPaymentDetail">
+  <button (click)="closeDetails()">X</button>
+  <h5>Travel Charge</h5>
+  <strong>
+    <p>We hope you had a wonderful journey!</p>
+  </strong>
+  <strong>
+    <p>Your travel charge is {{requestPaymentDetail.paymentAmount}}</p>
+  </strong>
+  <strong>
+    <p>Actual Duration :- {{requestPaymentDetail.actualDuration}}</p>
+  </strong>
+  <strong>
+    <p>Actual Drop Date :- {{getFormattedDate(requestPaymentDetail.actualDropDate)}}</p>
+  </strong>
+  <strong>
+    <p>Actual Drop Time :- {{getFormattedTime(requestPaymentDetail.actualDropTime)}}</p>
+  </strong>
+ 
+  <button (click)="routeToPostFeedback()">Write a Review</button>
+  <button (click)="closeDetails()">>> Skip Now</button>
+</div> -->

@@ -1,0 +1,106 @@
+<!-- <div class="container">
+    <div class="left">
+        <img src="/assets/images/background.webp" alt="DriveU Background"
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px 0 0 8px;">
+        <div class="center-box">DRIVEU</div>
+    </div>
+    <div class="right">
+        <h2>Sign Up</h2>
+ 
+        <h5>JOIN DRIVEU TODAY</h5>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+            <input type="text" name="username" id="username" formControlName="username" placeholder="User name">
+            <div *ngIf="signUpForm.get('username').invalid && signUpForm.get('username').touched">
+                <small *ngIf="signUpForm.get('username').errors?.required">Username is required.</small>
+                <small *ngIf="signUpForm.get('username').errors?.pattern">Username should contain only characters.</small>
+            </div>
+            <input type="email" name="email" id="email" formControlName="email" placeholder="Email">
+            <div *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').touched">
+                <small *ngIf="signUpForm.get('email').errors?.required">Email is required.</small>
+                <small *ngIf="signUpForm.get('email').errors?.email">Email should be valid.</small>
+            </div>
+ 
+            <input type="text" name="mobileNumber" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number">
+            <div *ngIf="signUpForm.get('mobileNumber').invalid && signUpForm.get('mobileNumber').touched">
+                <small *ngIf="signUpForm.get('mobileNumber').errors?.required">Mobile Number is required.</small>
+                <small *ngIf="signUpForm.get('mobileNumber').errors?.pattern">Mobile Number should be 10 digits.</small>
+            </div>
+ 
+            <input type="password" name="password" id="password" formControlName="password" placeholder="Password">
+            <div *ngIf="signUpForm.get('password').invalid && signUpForm.get('password').touched">
+                <small *ngIf="signUpForm.get('password').errors?.required">Password is required.</small>
+                <small *ngIf="signUpForm.get('password').errors?.pattern">Password should be valid.</small>
+            </div>
+ 
+            <input type="password" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password">
+            <div *ngIf="signUpForm.get('confirmPassword').invalid && signUpForm.get('confirmPassword').touched">
+              <small *ngIf="signUpForm.get('confirmPassword').errors?.required">Confirm Password is required.</small>
+              <small *ngIf="signUpForm.get('confirmPassword').errors?.mismatch && signUpForm.get('confirmPassword').touched">Passwords do not match.</small>
+            </div>
+            
+ 
+            <select name="userRole" id="userRole" formControlName="userRole">
+                <option value="">Select Role</option>
+                <option value="ADMIN">Admin</option>
+                <option value="CUSTOMER">Customer</option>
+            </select>
+            <div *ngIf="signUpForm.get('userRole').invalid && signUpForm.get('userRole').touched">
+                <small *ngIf="signUpForm.get('userRole').errors?.required">User Role is required.</small>
+            </div>
+ 
+            <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+ 
+            <small>Already have an account? <a routerLink="/login">Log in</a></small>
+        </form>
+    </div>
+</div>
+
+ -->
+
+ <div class="container">
+    <div class="left">
+      <img src="/assets/images/background.webp" alt="DriveU Background"
+           style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px 0 0 8px;">
+      <div class="center-box">DRIVEU</div>
+    </div>
+    <div class="right">
+      <h2>Sign Up</h2>
+      <h5>JOIN DRIVEU TODAY</h5>
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <input type="text" name="username" id="username" formControlName="username" placeholder="User name">
+        <div *ngIf="signUpForm.get('username').invalid && signUpForm.get('username').touched">
+          <small *ngIf="signUpForm.get('username').errors?.required">Username is required.</small>
+          <small *ngIf="signUpForm.get('username').errors?.pattern">Username should contain only characters.</small>
+        </div>
+        
+        <input type="email" name="email" id="email" formControlName="email" placeholder="Email">
+        <div *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').touched">
+          <small *ngIf="signUpForm.get('email').errors?.required">Email is required.</small>
+          <small *ngIf="signUpForm.get('email').errors?.email">Email should be valid.</small>
+        </div>
+        
+        <input type="text" name="mobileNumber" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number">
+        <div *ngIf="signUpForm.get('mobileNumber').invalid && signUpForm.get('mobileNumber').touched">
+          <small *ngIf="signUpForm.get('mobileNumber').errors?.required">Mobile Number is required.</small>
+          <small *ngIf="signUpForm.get('mobileNumber').errors?.pattern">Mobile Number should be 10 digits.</small>
+        </div>
+        
+        <input type="password" name="password" id="password" formControlName="password" placeholder="Password">
+        <div *ngIf="signUpForm.get('password').invalid && signUpForm.get('password').touched">
+          <small *ngIf="signUpForm.get('password').errors?.required">Password is required.</small>
+          <small *ngIf="signUpForm.get('password').errors?.pattern">Password should be valid.</small>
+        </div>
+        
+        <input type="password" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password">
+        <div *ngIf="signUpForm.get('confirmPassword').invalid && signUpForm.get('confirmPassword').touched">
+          <small *ngIf="signUpForm.get('confirmPassword').errors?.required">Confirm Password is required.</small>
+          <small *ngIf="signUpForm.get('confirmPassword').errors?.mismatch">Passwords do not match.</small>
+        </div>
+        
+        <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+        
+        <small>Already have an account? <a routerLink="/login">Log in</a></small>
+      </form>
+    </div>
+  </div>
+  

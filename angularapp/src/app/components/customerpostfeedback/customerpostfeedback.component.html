@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Submit Feedback</h1>
+    <form [formGroup]="feedbackForm" (ngSubmit)="addFeedback()">
+        <div>
+            <label for="feedback">Feedback <span class="required">*</span></label>
+            <textarea id="feedback" name="feedback" formControlName="feedbackText" cols="30" rows="10" required></textarea>
+            <div *ngIf="feedbackForm.get('feedbackText').touched && feedbackForm.get('feedbackText').invalid">
+                <span class="error" *ngIf="feedbackForm.get('feedbackText').errors.required">*Feedback is required.</span>
+            </div>
+        </div>
+ 
+        <div>
+            <label for="category">Category <span class="required">*</span></label>
+            <select id="category" name="category" formControlName="category" required>
+                <option value="" disabled selected>Select category</option>
+                <option value="Service Experience">Service Experience</option>
+                <option value="Driver Performance">Driver Performance</option>
+            </select>
+            <div *ngIf="feedbackForm.get('category')?.touched && feedbackForm.get('category')?.invalid">
+                <span class="error" *ngIf="feedbackForm.get('category').errors.required">*Category is required.</span>
+            </div>
+        </div>
+ 
+        <div>
+            <label for="rating">Rating (1-5) <span class="required">*</span></label>
+            <input type="number" name="rating" formControlName="rating" min="1" max="5" required/>
+            <div *ngIf="feedbackForm.get('rating')?.touched && feedbackForm.get('rating')?.invalid">
+                <span class="error" *ngIf="feedbackForm.get('rating').errors.required">*Rating is required.</span>
+                <span class="error" *ngIf="feedbackForm.get('rating').errors.min || feedbackForm.get('rating').errors.max">*Rating must be between 1 and 5.</span>
+            </div>
+        </div>
+ 
+        <!-- <div>
+            <label for="date">Date <span class="required">*</span></label>
+            <input type="date" name="date" formControlName="date"/>
+            <div *ngIf="feedbackForm.get('date')?.touched && feedbackForm.get('date')?.invalid">
+                <span class="error" *ngIf="feedbackForm.get('date').errors.required">*Date is required.</span>
+            </div>
+        </div> -->
+ 
+        <button type="submit">Submit</button>
+    </form>
+</div>
+ 

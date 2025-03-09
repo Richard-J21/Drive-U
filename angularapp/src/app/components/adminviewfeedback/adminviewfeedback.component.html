@@ -1,0 +1,47 @@
+<h2>Feedback Received</h2>
+<hr>
+ 
+<table>
+    <thead>
+        <tr>
+            <th>S.NO</th>
+            <th>USER NAME</th>
+            <th>FEEDBACK</th>
+            <th>POSTED DATE</th>
+            <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="filteredFeedbacks.length === 0">
+          <td colspan="7">No data found</td>
+        </tr>
+        <tr *ngFor="let feedback of filteredFeedbacks; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ feedback.user.username }}</td>
+          <td>{{ feedback.feedbackText }}</td>
+          <td>{{ feedback.date | date }}</td>
+          <td>
+            <button (click)="showProfile(feedback)">Show Profile</button>
+            <button (click)="viewDriverInfo(feedback)">View Driver Info</button>
+          </td>
+        </tr>
+      </tbody>
+</table>
+<div *ngIf="user">
+    <h3>User details</h3>
+    <p><strong>Email: </strong>{{user.email}}</p>
+    <p><strong>User Name: </strong>{{user.username}}</p>
+    <p><strong>Mobile Number: </strong>{{user.mobileNumber}}</p>
+    <button (click)="close()">Close</button>
+</div>
+
+<div *ngIf="driver">
+    <h3>Driver details</h3>
+    <p><strong>Driver Name: </strong>{{driver.driverName}}</p>
+    <p><strong>User Name: </strong>{{driver.licenseNumber}}</p>
+    <p><strong>ExperienceYears: </strong>{{driver.experienceYears}}</p>
+    <p><strong>Vehicle Type: </strong>{{driver.vehicleType}}</p>
+    <p><strong>Hourly Rate: </strong>{{driver.hourlyRate}}</p>
+    <button (click)="close()">Close</button>
+</div>
+
